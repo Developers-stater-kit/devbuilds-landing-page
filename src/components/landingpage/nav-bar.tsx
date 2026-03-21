@@ -23,7 +23,7 @@ export function NavBar() {
     // { name: "Devkit", link: "/devkit" },
     { name: "About", link: "/about" },
     { name: "Templets", link: "/templets" },
-    { name: "Pricing", link: "/pricing" },
+    { name: "contact", link: "/contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,7 +40,7 @@ export function NavBar() {
           <NavItems items={navItems} />
           <div className="relative z-30 flex items-center gap-4">
             <AnimatedThemeToggler />
-            <Link href="/meeting">
+            <Link href="/contact">
               <Button className="px-4 py-1" variant={"outline"}>
                 Start Your Project
               </Button>
@@ -75,13 +75,13 @@ export function NavBar() {
               </Link>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <Link href="/meeting">
+              <Link href="/contact">
                 <Button
                   onClick={() => setIsMobileMenuOpen(false)}
                   variant="default"
                   className="w-full"
                 >
-                  Book a Demo
+                  Start Your Project
                 </Button>
               </Link>
             </div>

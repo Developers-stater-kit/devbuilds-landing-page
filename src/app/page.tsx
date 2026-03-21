@@ -6,47 +6,33 @@ import TempletSection from "@/components/landingpage/templet-section/templet-sec
 import { ScalesContainer } from "@/components/ui/scales";
 import { CTA2, CTASection } from "@/components/landingpage/cta";
 import Agency from "@/components/landingpage/agency-section/agency";
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { HyperText } from "@/components/ui/hyper-text";
 
 const Stats = [
   {
     title: "Weekly Downloads",
-    value: "357+",
-    description: (
-      <>
-        Developers actively using <br />
-        DevKit every week
-      </>
-    ),
+    value: 357,
+    suffix: "+",
+    description: "Developers actively using DevKit every week",
   },
   {
     title: "Templates Published",
-    value: "3+",
-    description: (
-      <>
-        Launch-ready pages across <br />
-        multiple industries
-      </>
-    ),
+    value: 3,
+    suffix: "+",
+    description: "Launch-ready pages across multiple industries",
   },
   {
     title: "Response Time",
-    value: "24hrs",
-    description: (
-      <>
-        We get back to every <br />
-        project inquiry, fast
-      </>
-    ),
+    value: 24,
+    suffix: "hr",
+    description: "We get back to every project inquiry, fast",
   },
   {
     title: "GitHub Commits",
-    value: "24+",
-    description: (
-      <>
-        Actively shipping improvements <br />
-        every week
-      </>
-    ),
+    value: 24,
+    suffix: "+",
+    description: "Actively shipping improvements every week",
   },
 ];
 
@@ -67,13 +53,14 @@ export default function Home() {
               title={stat.title}
               metric={stat.value}
               description={stat.description}
+              suffix={stat.suffix}
             />
           ))}
         </div>
       </div>
 
       {/* DevKit */}
-      <SectionWrapper borders={{left: true, right: true}}>
+      <SectionWrapper borders={{ left: true, right: true }}>
         <DevkitSection />
       </SectionWrapper>
 
@@ -111,16 +98,31 @@ function StatsCard({
   title,
   metric,
   description,
+  suffix,
 }: {
   title: string;
-  metric: string;
-  description: React.ReactNode;
+  metric: number;
+  description: string;
+  suffix?: string;
 }) {
   return (
-    <div className="border border-foreground/30 py-4 h-full w-full lg:w-[200px] flex flex-col justify-center items-center gap-2 bg-white/10 rounded-xl px-2">
+    <div className="cursor-pointer border border-foreground/30 py-4 h-full w-full lg:w-[200px] flex flex-col justify-center items-center gap-2 bg-white/10 rounded-xl px-2">
       <p className="uppercase text-[9px] sm:text-xs font-medium tracking-wider text-center text-balance">{title}</p>
-      <p className="text-xl sm:text-2xl">{metric}</p>
-      <p className="text-[9px] sm:text-[10px] text-center text-balance">{description}</p>
+      <div className="flex gap-1">
+        <NumberTicker
+          value={metric as number}
+          className="text-xl sm:text-2xl font-medium tracking-tighter"
+        />
+        <p className="text-xl sm:text-2xl">{suffix}</p>
+      </div>
+      <HyperText
+        className="text-[9px] sm:text-xs text-center font-bold text-muted-foreground py-0"
+        duration={600}
+        animateOnHover={true}
+        startOnView={false}
+      >
+        {description}
+      </HyperText>
     </div>
   );
 }

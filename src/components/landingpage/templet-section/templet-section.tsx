@@ -8,27 +8,37 @@ const templates = [
   {
     slug: "saas-starter",
     title: "SaaS Starter",
-    description:
-      "A clean, conversion-focused landing page for your SaaS product.",
+    description: "A clean, conversion-focused landing page for your SaaS product.",
     thumbnail: {
       type: "image" as const,
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
     },
-    deployedUrl: "https://saas-template.devbuilds.in",
-    sourceUrl: "https://github.com/devbuilds/saas-template",
+    // deployedUrl: "https://saas-template.devbuilds.in",
+    // sourceUrl: "https://github.com/devbuilds/saas-template",
     installCommand: "npx @dvbuilds/kit init --template saas",
   },
   {
-    slug: "restaurant-pro",
-    title: "Restaurant Pro",
-    description: "Premium landing page for restaurants and cafes.",
-    // thumbnail: { type: "video" as const, src: "/templates/restaurant.mp4" },
-    deployedUrl: "https://restaurant.devbuilds.in",
+    slug: "startup-launch",
+    title: "Startup Launch",
+    description: "High energy waitlist and launch page for early stage startups.",
+    thumbnail: {
+      type: "image" as const,
+      src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80",
+    },
+    // deployedUrl: "https://startup-template.devbuilds.in",
+    installCommand: "npx @dvbuilds/kit init --template startup",
   },
   {
-    slug: "ai-product",
-    title: "AI Product",
-    description: "Bold landing page built for AI tools and products.",
+    slug: "portfolio-dev",
+    title: "Developer Portfolio",
+    description: "Minimal dark portfolio template for developers and designers.",
+    thumbnail: {
+      type: "image" as const,
+      src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=600&q=80",
+    },
+    // deployedUrl: "https://portfolio-template.devbuilds.in",
+    // sourceUrl: "https://github.com/devbuilds/portfolio-template",
+    installCommand: "npx @dvbuilds/kit init --template portfolio",
   },
 ];
 
@@ -59,9 +69,9 @@ export default function TempletSection() {
               slug={template.slug}
               title={template.title}
               description={template.description}
-              //   thumbnail={template.thumbnail}
-              deployedUrl={template.deployedUrl}
-              sourceUrl={template.sourceUrl}
+              // thumbnail={template.thumbnail}
+              // deployedUrl={template.deployedUrl}
+              // sourceUrl={template.sourceUrl}
               installCommand={template.installCommand}
             />
           ))}

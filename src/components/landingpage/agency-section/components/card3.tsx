@@ -1,5 +1,4 @@
 import { TypographyH3 } from '@/components/Typography/typography'
-import { Safari } from '@/components/ui/safari'
 import React from 'react'
 import { BrowserMockup } from './windows'
 

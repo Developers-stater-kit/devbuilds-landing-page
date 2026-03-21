@@ -28,7 +28,7 @@ export default function NotFound() {
                 className={buttonVariants({
                   variant: "default",
                   size: "lg",
-                  className: "font-semibold",
+                  className: "font-semibold rounded-4xl px-8 text-black",
                 })}
               >
                 Return to Homepage

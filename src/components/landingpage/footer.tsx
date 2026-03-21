@@ -6,10 +6,8 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { Button } from "../ui/button";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
+import { AGENCY_EMAIL, WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from "@/lib/constant";
 
-const AGENCY_EMAIL = "debojeetkarmakar2004@outlook.com";
-const WHATSAPP_NUMBER = "917488355142"; // format: country code + number, no +
-const WHATSAPP_MESSAGE = "Hi! I'd like to discuss a project with DevBuilds.";
 
 export default function Footer() {
   return (
@@ -22,7 +20,7 @@ export default function Footer() {
             {/* Brand */}
             <div>
               <p className="text-foreground text-4xl font-semibold tracking-tight">
-                Devbuild.
+                Devbuilds.
               </p>
               <p className="text-muted-foreground text-md leading-relaxed mt-1.5">
                 The right stack, custom templates, and real support—everything

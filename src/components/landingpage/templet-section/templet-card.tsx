@@ -39,7 +39,7 @@ function FallbackThumbnail() {
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <path d="M3 9h18M9 21V9" />
         </svg>
-        <span className="text-xs font-mono">preview</span>
+        <span className="text-xs font-mono">comming soon</span>
       </div>
     </div>
   );

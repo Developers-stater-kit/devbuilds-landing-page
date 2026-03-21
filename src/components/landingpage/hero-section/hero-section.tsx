@@ -7,6 +7,7 @@ import Card1 from "./hero-cards/card1";
 import Card2 from "./hero-cards/card2";
 import Card3 from "./hero-cards/card3";
 import { RainbowButton } from "../../ui/rainbow-button";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -29,8 +30,12 @@ export default function HeroSection() {
           </TypographyP>
         </div>
         <div className="flex justify-center items-center gap-4 mt-1">
-          <RainbowButton className="rounded-xl dark:text-black">Start a Project →</RainbowButton>
-          <RainbowButton variant={"outline"} className="rounded-xl">Browse Templets</RainbowButton>
+          <Link href="/contact">
+            <RainbowButton className="rounded-xl dark:text-black">Start a Project →</RainbowButton>
+          </Link>
+          <Link href="/templets">
+            <RainbowButton variant={"outline"} className="rounded-xl">Browse Templets</RainbowButton>
+          </Link>
         </div>
       </div>
       <div className="w-fit lg:w-full relative flex flex-col md:flex-row justify-center items-center mt-8 md:mt-8 lg:mt-12 xl:mt-16 md:max-w-[800px] xl:max-w-[1200px] py-10 md:py-20 lg:py-0  xl:scale-100">

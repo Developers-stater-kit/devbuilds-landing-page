@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { TypographyH2, TypographyH3 } from "../Typography/typography";
 import { Cursive, Tag } from "../Typography/utils";
 import { Play, Star } from "lucide-react";
+import Link from "next/link";
 
 export function CTASection() {
   return (
@@ -15,18 +16,18 @@ export function CTASection() {
       <div className="relative z-10 mx-auto flex flex-col justify-center items-center text-center">
         <Tag>What are you waiting for?</Tag>
         <TypographyH2 className="font-medium text-zinc-900 dark:text-white leading-tight tracking-tight transition-colors duration-500">
-          Let's build something people actually want.
+          Beautiful pages. Ready before lunch.
         </TypographyH2>
-        <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-200 max-w-md xl:max-w-xl transition-colors duration-500">
-          From first line of code to live product — DevBuilds has every piece.
+        <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-200 max-w-md xl:max-w-2xl transition-colors duration-500">
+          Pick a template, make it yours, go live today. No designer needed. No dev setup required. Just pick and ship.
         </p>
         <Button
           className="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 rounded-full px-8 py-6 mt-3 text-base font-semibold transition-all shadow-lg dark:shadow-none"
           asChild
         >
-          <a href="https://github.com/devbuilds/saas-template" target="_blank" rel="noopener noreferrer">
-            Get Started Free
-          </a>
+          <Link href="/contact">
+            Browse Templates →
+          </Link>
         </Button>
       </div>
     </div>
@@ -46,15 +47,17 @@ export function CTA2() {
       {/* Left Content */}
       <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-start text-left">
         <TypographyH2 className="text-3xl md:text-5xl font-medium text-foreground tracking-tight leading-[1.15] mb-2">
-          Your Next <br/>Product <Cursive classname="inline-block text-amber-600">Starts Here.</Cursive>
+          Your Next <br />Product <Cursive classname="inline-block text-amber-600">Starts Here.</Cursive>
         </TypographyH2>
         <p className="text-muted-foreground text-sm md:text-base max-w-[420px] leading-relaxed">
           Got an idea, a business, or a product that needs to exist? We're the team that makes it happen.
         </p>
         <div className="mt-6 flex items-center gap-3">
-          <Button variant="outline" className="rounded-xl border-border bg-background/50 hover:bg-foreground/5 text-foreground transition-colors h-11 px-5">
-            Start Your Project
-          </Button>
+          <Link href="/contact">
+            <Button variant="outline" className="rounded-xl border-border bg-background/50 hover:bg-foreground/5 text-foreground transition-colors h-11 px-5">
+              Start Your Project
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -72,7 +75,7 @@ export function CTA2() {
               ))}
             </div> */}
             <p className="text-sm text-muted-foreground leading-relaxed mb-8 font-light">
-              "We built DvKit because we were tired of spending day one on configuration instead of building. That same obsession with speed is what we bring to every client project."
+              "We started DevBuilds because we believed great products shouldn't be held back by slow teams, endless back-and-forth, or bloated timelines. You have an idea. We have the skills. Let's just build it."
             </p>
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-amber-500/10 overflow-hidden border border-amber-500/20 shrink-0">
