@@ -13,7 +13,6 @@ import {
 } from "../ui/resizable-navbar";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { ThemeToggle } from "@/app/ThemeToggle";
 import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 
 const LOGO_URL =
@@ -21,7 +20,8 @@ const LOGO_URL =
 
 export function NavBar() {
   const navItems = [
-    { name: "Devkit", link: "/devkit" },
+    // { name: "Devkit", link: "/devkit" },
+    { name: "About", link: "/about" },
     { name: "Templets", link: "/templets" },
     { name: "Pricing", link: "/pricing" },
   ];
@@ -39,6 +39,7 @@ export function NavBar() {
           </Link>
           <NavItems items={navItems} />
           <div className="relative z-30 flex items-center gap-4">
+            <AnimatedThemeToggler />
             <Link href="/meeting">
               <Button className="px-4 py-1" variant={"outline"}>
                 Start Your Project
@@ -50,6 +51,9 @@ export function NavBar() {
         <MobileNav>
           <MobileNavHeader className="px-4">
             {/* <NavbarLogo url={LOGO_URL} /> */}
+            <Link href="/" className="font-semibold text-xl">
+              Devbuilds.
+            </Link>
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

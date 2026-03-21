@@ -64,7 +64,7 @@ export default function FaqSection() {
           The stuff people <Cursive classname="inline-block">always</Cursive>{" "}
           ask.
         </TypographyH2>
-        <TypographyP className="pt-1 text-center text-lg text-muted-foreground leading-relaxed">
+        <TypographyP className="text-center px-4 lg:px-0 lg:text-lg text-muted-foreground leading-relaxed">
           Here are the questions most founders and developers ask before getting
           started.
         </TypographyP>

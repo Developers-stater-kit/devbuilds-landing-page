@@ -20,7 +20,7 @@ export function TypographyH1({
   );
 }
 
-export function TypographyH2({
+export function  TypographyH2({
   children,
   className,
 }: {
@@ -31,7 +31,7 @@ export function TypographyH2({
     <h2
       aria-label={children as string}
       className={cn(
-        `scroll-m-20 pb-2 sm:text-2xl tracking-tight first:mt-0 md:text-3xl lg:text-5xl`,
+        `scroll-m-20 pb-2 text-xl sm:text-2xl tracking-tight first:mt-0 md:text-3xl lg:text-5xl`,
         className
       )}
     >
@@ -51,7 +51,7 @@ export function TypographyH3({
   return (
     <h3
       {...props}
-      className={cn(`scroll-m-20 text-xl font-normal tracking-tight md:text-2xl lg:text-3xl ${className}`)}
+      className={cn(`scroll-m-20 text-xl font-normal tracking-tight md:text-xl lg:text-2xl xl:text-3xl ${className}`)}
     >
       {children}
     </h3>

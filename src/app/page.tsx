@@ -1,15 +1,11 @@
 import FaqSection from "@/components/landingpage/faq-section/faq";
-import { Container } from "@/components/landingpage/container";
+import { Container, SectionWrapper } from "@/components/landingpage/container";
 import DevkitSection from "@/components/landingpage/devkit-section/devkit-section";
-import Footer from "@/components/landingpage/footer";
 import HeroSection from "@/components/landingpage/hero-section/hero-section";
-import { TemplateCard } from "@/components/landingpage/templet-section/templet-card";
 import TempletSection from "@/components/landingpage/templet-section/templet-section";
-import { TypographyP } from "@/components/Typography/typography";
-import { Button } from "@/components/ui/button";
-import Scales, { ScalesContainer } from "@/components/ui/scales";
-import Link from "next/link";
-import CTASection from "@/components/landingpage/cta";
+import { ScalesContainer } from "@/components/ui/scales";
+import { CTA2, CTASection } from "@/components/landingpage/cta";
+import Agency from "@/components/landingpage/agency-section/agency";
 
 const Stats = [
   {
@@ -56,81 +52,61 @@ const Stats = [
 
 export default function Home() {
   return (
-    <>
-      <ScalesContainer
-        orientation="diagonal"
-        size={12}
-        containerClassName="w-full flex items-center justify-center flex-col "
-      >
-        <Container className="border-x-2 border-dashed h-full">
-          <div className="relative h-full flex flex-col gap-3 items-center justify-center bg-zinc-50 font-sans dark:bg-background w-full">
-            <HeroSection />
-          </div>
-        </Container>
-      </ScalesContainer>
+    <div className="mx-auto">
+      {/* Hero */}
+      <SectionWrapper>
+        <HeroSection />
+      </SectionWrapper>
 
-      <div className="h-40 border-y-2 w-full bg-card flex justify-center items-center gap-4 p-3">
-        {Stats.map((item, idx) => (
-          <StatsCard
-            key={idx}
-            title={item.title}
-            metric={item.value}
-            description={item.description}
-          />
-        ))}
+      {/* Proof Strip — intentionally outside SectionWrapper to break the scales pattern */}
+      <div className="relative w-full border-y-2 border-dashed bg-background z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 lg:gap-10">
+          {Stats.map((stat, index) => (
+            <StatsCard
+              key={index}
+              title={stat.title}
+              metric={stat.value}
+              description={stat.description}
+            />
+          ))}
+        </div>
       </div>
 
-      <ScalesContainer
-        orientation="diagonal"
-        size={12}
-        containerClassName="w-full flex items-center justify-center flex-col "
-      >
-        <Container className="border-x-2 border-dashed ">
-          <div className="relative h-fit flex flex-col gap-3 items-center justify-center bg-zinc-50 font-sans dark:bg-background w-full">
-            <DevkitSection />
-          </div>
-        </Container>
-      </ScalesContainer>
+      {/* DevKit */}
+      <SectionWrapper borders={{left: true, right: true}}>
+        <DevkitSection />
+      </SectionWrapper>
 
-      <ScalesContainer
-        orientation="diagonal"
-        size={12}
-        containerClassName="w-full flex items-center justify-center flex-col"
-      >
-        <Container className="border-x-2 border-b-2 border-dashed ">
-          <div className="relative h-fit flex flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-background w-full">
-            <TempletSection />
-          </div>
-        </Container>
-      </ScalesContainer>
+      {/* Templates */}
+      <SectionWrapper borders={{ left: true, right: true, bottom: true, top: true }}>
+        <TempletSection />
+      </SectionWrapper>
 
-      <ScalesContainer
-        orientation="diagonal"
-        size={12}
-        containerClassName="relative w-full flex items-center justify-center flex-col"
-      >
-        <Container className="relative border-x-2 border-dashed">
-          <div className="w-full h-[400px] my-14 bg-background border-y-2 border-dashed">
-            <CTASection/>
-          </div>
-        </Container>
-      </ScalesContainer>
+      <SectionWrapper borders={{ left: true, right: true }} innerClassName="my-14">
+        <div className="w-full h-[400px] bg-background border-y-2 border-dashed p-4">
+          <CTASection />
+        </div>
+      </SectionWrapper>
 
-      <ScalesContainer
-        orientation="diagonal"
-        size={12}
-        containerClassName="w-full flex items-center justify-center flex-col"
-      >
-        <Container className="border-x-2 border-t-2 border-dashed ">
-          <div className="relative h-fit flex flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-background w-full">
-            <FaqSection />
-          </div>
-        </Container>
-      </ScalesContainer>
-    </>
+      {/* Agency */}
+      <SectionWrapper borders={{ left: true, right: true, top: true }}>
+        <Agency />
+      </SectionWrapper>
+
+      {/* FAQ */}
+      <SectionWrapper borders={{ left: true, right: true, top: true }}>
+        <FaqSection />
+      </SectionWrapper>
+
+      {/* CTA */}
+      <SectionWrapper borders={{ left: true, right: true, top: true }}>
+        <div className="p-2">
+          <CTA2 />
+        </div>
+      </SectionWrapper>
+    </div>
   );
 }
-
 function StatsCard({
   title,
   metric,
@@ -141,10 +117,10 @@ function StatsCard({
   description: React.ReactNode;
 }) {
   return (
-    <div className="border border-foreground/30 h-full w-50 flex flex-col justify-center items-center gap-2 bg-white/10 rounded-xl">
-      <p className="uppercase text-xs font-medium tracking-wider">{title}</p>
-      <p className="text-2xl">{metric}</p>
-      <p className="text-[10px] text-center">{description}</p>
+    <div className="border border-foreground/30 py-4 h-full w-full lg:w-[200px] flex flex-col justify-center items-center gap-2 bg-white/10 rounded-xl px-2">
+      <p className="uppercase text-[9px] sm:text-xs font-medium tracking-wider text-center text-balance">{title}</p>
+      <p className="text-xl sm:text-2xl">{metric}</p>
+      <p className="text-[9px] sm:text-[10px] text-center text-balance">{description}</p>
     </div>
   );
 }

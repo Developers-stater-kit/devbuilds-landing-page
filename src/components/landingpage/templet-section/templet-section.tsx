@@ -34,7 +34,7 @@ const templates = [
 
 export default function TempletSection() {
   return (
-    <div className="w-full h-[670px] flex flex-col justify-start items-center pt-20 gap-16">
+    <div className="w-full h-fit pb-2 flex flex-col justify-start items-center pt-20 gap-16">
       {/* ── Header ── */}
       <div className="flex flex-col justify-center items-center">
         <Tag>Become Launch Ready</Tag>
@@ -45,14 +45,14 @@ export default function TempletSection() {
           </Highlighter>{" "}
           Ready to go live.
         </TypographyH2>
-        <TypographyP className="pt-2 text-center">
+        <TypographyP className="pt-2 text-center px-2 md:px-0 md:w-xl lg:w-2xl">
           Handcrafted, production-ready landing pages—designed to help you launch faster and look your best, without any hassle.
         </TypographyP>
       </div>
 
-      {/* ── Bento Grid ── */}
+      {/* ── Templets Grid ── */}
       <div className="w-full border-t-2 border-dashed">
-        <div className="grid grid-cols-3 divide-x divide-border divide-dashed px-2 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-x divide-border divide-dashed gap-2 lg:gap-0 px-2 pt-2">
           {templates.map((template) => (
             <TemplateCard
               key={template.slug}

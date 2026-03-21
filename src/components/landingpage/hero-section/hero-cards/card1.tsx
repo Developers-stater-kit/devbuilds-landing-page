@@ -19,7 +19,7 @@ export default function Card1({
       <div className="">
         <TypographyP>Start right start fast</TypographyP>
         <TypographyH3>with our <Cursive classname="inline">Cli Tool</Cursive></TypographyH3>
-        <p className="text-xs mt-2">Skip setup. DevKit wires your stack<br/> so you can build, fast.</p>
+        <p className="text-[11px] md:text-[9.5px] lg:text-[11px] xl:text-xs mt-1 md:mt-0.5 lg:mt-1 xl:mt-2 leading-tight">Skip setup. DevKit wires your stack<br/> so you can build, fast.</p>
       </div>
       <TerminalDemo/>
     </div>

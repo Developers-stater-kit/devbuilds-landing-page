@@ -153,7 +153,7 @@ export function TemplateCard({
 
       {/* ── Body ── */}
       <Link 
-        href={`/templet/${slug}`}
+        href={`/templets/${slug}`}
         className="p-4 flex flex-col flex-1 border-t border-border min-h-[142px]"
     > {/* min-h ensures constant body height */}
         <div className="flex items-start justify-between gap-2">
