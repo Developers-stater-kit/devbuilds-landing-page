@@ -6,7 +6,7 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { Button } from "../ui/button";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
-import { AGENCY_EMAIL, WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from "@/lib/constant";
+import { AGENCY_EMAIL, GITHUB_URL, LINKEDIN_URL, TWITTER_URL, WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from "@/lib/constant";
 
 
 export default function Footer() {
@@ -98,12 +98,12 @@ export default function Footer() {
                 {[
                   {
                     label: "Twitter / X",
-                    href: "https://twitter.com/devbuilds",
+                    href: TWITTER_URL,
                   },
-                  { label: "GitHub", href: "https://github.com/devbuilds" },
+                  { label: "GitHub", href: GITHUB_URL },
                   {
                     label: "LinkedIn",
-                    href: "https://linkedin.com/company/devbuilds",
+                    href: LINKEDIN_URL,
                   },
                 ].map((item) => (
                   <li key={item.label}>
