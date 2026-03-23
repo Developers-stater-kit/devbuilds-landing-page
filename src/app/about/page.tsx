@@ -1,5 +1,12 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { SectionWrapper } from '@/components/landingpage/container';
+
+export const metadata: Metadata = {
+  title: "About Us | DevBuilds",
+  description: "Learn about Debojeet and why DevBuilds was started to bridge world-class aesthetics with high-performance engineering.",
+};
+
 import { TypographyH1, TypographyH2, TypographyH3, TypographyP } from '@/components/Typography/typography';
 import { ArrowRight, Code2, Layers, PenTool, Database, Bot, Workflow, Sparkles } from 'lucide-react';
 import Link from 'next/link';
@@ -18,7 +25,7 @@ export default function AboutPage() {
             <TypographyH1 className="text-5xl md:text-6xl lg:text-[5rem] font-medium tracking-tight leading-[1.1]">
               I'm Debojeet.<br />
               <span className="text-muted-foreground text-3xl md:text-4xl lg:text-[2.5rem] mt-2 block leading-snug">
-                Full-Stack Developer and Designer.
+                Founder & Full-Stack Developer.
               </span>
             </TypographyH1>
             <Link href="https://debojeet.in" target='_blank' className='flex justify-start items-center gap-0 group text-foreground/50'>
@@ -28,7 +35,7 @@ export default function AboutPage() {
           </div>
 
           <div className="w-full md:w-1/3 flex justify-center md:justify-end">
-            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-[2rem] overflow-hidden border-8 border-background shadow-2xl ring-1 ring-border mt-4 md:mt-0 rotate-3 transition-transform hover:rotate-0 duration-500">
+            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-4xl overflow-hidden border-8 border-background shadow-2xl ring-1 ring-border mt-4 md:mt-0 rotate-3 transition-transform hover:rotate-0 duration-500">
               <img
                 src="https://wsrv.nl/?url=https://cdn.hyrecruitai.com/website-assets/images/2fc213ad-b99c-4d8d-8f15-2d9c43c45290-debojeet.jpg"
                 alt="Debojeet"
@@ -47,13 +54,13 @@ export default function AboutPage() {
             <TypographyH2 className="text-foreground text-3xl md:text-4xl">Why I Started This Agency.</TypographyH2>
           </div>
           <p>
-            With over two years of experience as a Computer Science Engineer working purely as a full-stack developer, I realized that building great products isn't just about putting code together—it's about fundamentally understanding the core problems a business faces and solving them beautifully.
+            With years of experience as a full-stack developer, I realized that building great products isn't just about code—it's about solving real business problems beautifully.
           </p>
           <p>
-            I started DevBuilds as a modern web agency to bridge the gap between world-class aesthetics and high-performance engineering. I have the technical skills, the design obsession, and the absolute drive to build premium web experiences from scratch.
+            I started DevBuilds to bridge the gap between world-class aesthetics and high-performance engineering. I have the technical skills, the design obsession, and the absolute drive to build premium web experiences from scratch.
           </p>
           <p>
-            My goal is simple: I want to help businesses and founders bring their ambitious ideas to life, scale their vision into reality, and ultimately, grow together. Let's build something exceptional.
+            My goal is simple: to help businesses bring their ambitious ideas to life, scale their vision into reality, and grow together. Let's build something exceptional.
           </p>
         </div>
       </SectionWrapper>
