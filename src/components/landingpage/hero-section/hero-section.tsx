@@ -16,17 +16,16 @@ export default function HeroSection() {
         <div className="flex flex-col justify-center items-center">
           <Tag classname="text-xl">Think · Build · Launch</Tag>
           <TypographyH1 className="font-medium text-center">
-            Build Better Ship{" "}
+            Build Better. Ship{" "}
             <Cursive classname="inline font-medium">
               <Highlighter action="underline" color="#FF9800">
-                Faster
+                Faster.
               </Highlighter>
             </Cursive>
           </TypographyH1>
           <TypographyP className="mt-4 max-w-2xl text-center">
-            The tools to start without the setup headache. The templates to
-            launch without waiting on design. The team to build your product end
-            to end.{" "}
+            The tools to start without setup headaches. The templates to
+            launch without waiting for design. The team to build your product end-to-end.{" "}
           </TypographyP>
         </div>
         <div className="flex justify-center items-center gap-4 mt-1">
@@ -34,7 +33,7 @@ export default function HeroSection() {
             <RainbowButton className="rounded-xl dark:text-black">Start a Project →</RainbowButton>
           </Link>
           <Link href="/templets">
-            <RainbowButton variant={"outline"} className="rounded-xl">Browse Templets</RainbowButton>
+            <RainbowButton variant={"outline"} className="rounded-xl">Browse Templates</RainbowButton>
           </Link>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import FaqSection from "@/components/landingpage/faq-section/faq";
+import { Metadata } from "next";
 import { Container, SectionWrapper } from "@/components/landingpage/container";
 import DevkitSection from "@/components/landingpage/devkit-section/devkit-section";
 import HeroSection from "@/components/landingpage/hero-section/hero-section";
@@ -14,19 +15,19 @@ const Stats = [
     title: "Weekly Downloads",
     value: 357,
     suffix: "+",
-    description: "Developers actively using DevKit every week",
+    description: "Developers using DevKit weekly",
   },
   {
     title: "Templates Published",
     value: 3,
     suffix: "+",
-    description: "Launch-ready pages across multiple industries",
+    description: "Production-ready templates across industries",
   },
   {
     title: "Response Time",
     value: 24,
     suffix: "hr",
-    description: "We get back to every project inquiry, fast",
+    description: "Average response time for new inquiries",
   },
   {
     title: "GitHub Commits",
@@ -35,6 +36,11 @@ const Stats = [
     description: "Actively shipping improvements every week",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "DevBuilds | Dev Agency & Next.js Templates",
+  description: "Ship your product faster with our full-stack development team and production-ready Next.js templates.",
+};
 
 export default function Home() {
   return (

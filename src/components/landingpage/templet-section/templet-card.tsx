@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowUpRight, Globe, Github, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -153,7 +152,7 @@ export function TemplateCard({
 
       {/* ── Body ── */}
       <Link 
-        href={`/templets/${slug}`}
+        href={`/templates/${slug}`}
         className="p-4 flex flex-col flex-1 border-t border-border min-h-[142px]"
     > {/* min-h ensures constant body height */}
         <div className="flex items-start justify-between gap-2">

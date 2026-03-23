@@ -23,11 +23,11 @@ export default function ContactPage() {
         <div className="flex flex-col items-center text-center gap-6 py-20 mt-10 md:mt-20 px-4 w-full md:min-w-2xl max-w-4xl mx-auto">
           <Tag>Let's Connect</Tag>
           <TypographyH1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-medium tracking-tight leading-[1.1]">
-            Let's build<br/>
-            <span className="text-muted-foreground mt-2 inline-block">Something together.</span>
+            Let's Build<br/>
+            <span className="text-muted-foreground mt-2 inline-block">Something Exceptional.</span>
           </TypographyH1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mt-4">
-            Tell us what you need. We'll get back within 24 hours.
+            Tell us about your project. We'll get back to you within 24 hours.
           </p>
         </div>
       </SectionWrapper>

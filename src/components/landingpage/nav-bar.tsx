@@ -22,7 +22,7 @@ export function NavBar() {
   const navItems = [
     // { name: "Devkit", link: "/devkit" },
     { name: "About", link: "/about" },
-    { name: "Templets", link: "/templets" },
+    { name: "Templates", link: "/templates" },
     { name: "contact", link: "/contact" },
   ];
 
