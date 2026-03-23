@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://devbuilds.in/templets",
+      url: "https://devbuilds.in/templates",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,

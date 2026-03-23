@@ -55,33 +55,40 @@ export function Highlighter({
   useEffect(() => {
     const element = elementRef.current
     let resizeObserver: ResizeObserver | null = null
+    let initTimeout: NodeJS.Timeout
+    let resizeTimeout: NodeJS.Timeout
 
     if (shouldShow && element) {
-      const annotationConfig = {
-        type: action,
-        color,
-        strokeWidth,
-        animationDuration,
-        iterations,
-        padding,
-        multiline,
-      }
+      initTimeout = setTimeout(() => {
+        const annotationConfig = {
+          type: action,
+          color,
+          strokeWidth,
+          animationDuration,
+          iterations,
+          padding,
+          multiline,
+        }
 
-      const annotation = annotate(element, annotationConfig)
-
-      annotationRef.current = annotation
-      annotation.show()
-
-      resizeObserver = new ResizeObserver(() => {
-        annotation.hide()
+        const annotation = annotate(element, annotationConfig)
+        annotationRef.current = annotation
         annotation.show()
-      })
 
-      resizeObserver.observe(element)
-      resizeObserver.observe(document.body)
+        resizeObserver = new ResizeObserver(() => {
+          clearTimeout(resizeTimeout)
+          resizeTimeout = setTimeout(() => {
+            annotation.hide()
+            annotation.show()
+          }, 200)
+        })
+
+        resizeObserver.observe(element)
+      }, 700) // Delay to let Framer Motion animations settle
     }
 
     return () => {
+      clearTimeout(initTimeout)
+      clearTimeout(resizeTimeout)
       if (annotationRef.current) {
         annotationRef.current.remove()
         annotationRef.current = null

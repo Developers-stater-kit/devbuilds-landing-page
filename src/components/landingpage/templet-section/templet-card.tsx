@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, Globe, Github, Copy, Check } from "lucide-react";
 import { useState } from "react";
@@ -84,10 +85,12 @@ export function TemplateCard({
   className,
 }: TemplateCardProps) {
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
       className={cn(
-        "group flex flex-col bg-card text-card-foreground overflow-hidden",
-        "hover:bg-card/80 transition-colors duration-200",
+        "group flex flex-col bg-card text-card-foreground overflow-hidden shadow-sm",
+        "transition-colors duration-200 border border-border rounded-xl",
         className
       )}
       aria-label={`View ${title} template`}
@@ -174,6 +177,6 @@ export function TemplateCard({
           {description}
         </p>
       </Link>
-    </div>
+    </motion.div>
   );
 }

@@ -1,5 +1,8 @@
+"use client";
+
 import { cn } from '@/lib/utils';
 import React from 'react'
+import { motion } from 'framer-motion';
 import { ScalesContainer } from "@/components/ui/scales";
 
 function LayoutContainer({ children , classname }: { children: React.ReactNode, classname?: string }) {
@@ -55,14 +58,18 @@ function SectionWrapper({
       )}
     >
       <Container className={cn(borderClass, "overflow-hidden")}>
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
           className={cn(
             "relative h-fit flex flex-col gap-3 items-center justify-center bg-background w-full",
             innerClassName
           )}
         >
           {children}
-        </div>
+        </motion.div>
       </Container>
     </ScalesContainer>
   );

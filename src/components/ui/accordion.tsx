@@ -2,10 +2,9 @@
 
 import * as React from "react"
 import { Accordion as AccordionPrimitive } from "radix-ui"
+import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { ArrowDown01Icon, ArrowUp01Icon } from "@hugeicons/core-free-icons"
 
 function Accordion({
   className,
@@ -52,8 +51,11 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <HugeiconsIcon icon={ArrowDown01Icon} strokeWidth={2} data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-        <HugeiconsIcon icon={ArrowUp01Icon} strokeWidth={2} data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+        <ChevronDown 
+          className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-aria-expanded/accordion-trigger:rotate-180" 
+          strokeWidth={2}
+          data-slot="accordion-trigger-icon"
+        />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
