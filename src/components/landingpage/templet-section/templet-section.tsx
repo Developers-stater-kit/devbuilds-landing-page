@@ -1,48 +1,13 @@
 import { TypographyH2, TypographyP } from "@/components/Typography/typography";
 import { Tag } from "@/components/Typography/utils";
 import { Highlighter } from "@/components/ui/highlighter";
-import React from "react";
 import { TemplateCard } from "@/components/landingpage/templet-section/templet-card";
+import { getFeaturedTemplates, extractTextFromBlocks } from "@/lib/strapi";
 
-const templates = [
-  {
-    slug: "saas-starter",
-    title: "SaaS Starter",
-    description: "A clean, conversion-focused landing page for your SaaS product.",
-    thumbnail: {
-      type: "image" as const,
-      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
-    },
-    // deployedUrl: "https://saas-template.devbuilds.in",
-    // sourceUrl: "https://github.com/devbuilds/saas-template",
-    installCommand: "npx @dvbuilds/kit init --template saas",
-  },
-  {
-    slug: "startup-launch",
-    title: "Startup Launch",
-    description: "High energy waitlist and launch page for early stage startups.",
-    thumbnail: {
-      type: "image" as const,
-      src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80",
-    },
-    // deployedUrl: "https://startup-template.devbuilds.in",
-    installCommand: "npx @dvbuilds/kit init --template startup",
-  },
-  {
-    slug: "portfolio-dev",
-    title: "Developer Portfolio",
-    description: "Minimal dark portfolio template for developers and designers.",
-    thumbnail: {
-      type: "image" as const,
-      src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=600&q=80",
-    },
-    // deployedUrl: "https://portfolio-template.devbuilds.in",
-    // sourceUrl: "https://github.com/devbuilds/portfolio-template",
-    installCommand: "npx @dvbuilds/kit init --template portfolio",
-  },
-];
+export default async function TempletSection() {
+  const templates = await getFeaturedTemplates();
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
-export default function TempletSection() {
   return (
     <div className="w-full h-fit pb-2 flex flex-col justify-start items-center pt-20 gap-16">
       {/* ── Header ── */}
@@ -63,18 +28,27 @@ export default function TempletSection() {
       {/* ── Templets Grid ── */}
       <div className="w-full border-t-2 border-dashed">
         <div className="grid grid-cols-1 md:grid-cols-3 divide-x divide-border divide-dashed gap-2 lg:gap-0 px-2 pt-2">
-          {templates.map((template) => (
-            <TemplateCard
-              key={template.slug}
-              slug={template.slug}
-              title={template.title}
-              description={template.description}
-              // thumbnail={template.thumbnail}
-              // deployedUrl={template.deployedUrl}
-              // sourceUrl={template.sourceUrl}
-              installCommand={template.installCommand}
-            />
-          ))}
+          {templates.map((template) => {
+            // Ensure thumbnail URL is absolute if it's a relative path starting with /
+            const thumbUrl = template.thumbnail?.url
+              ? template.thumbnail.url.startsWith("http")
+                ? template.thumbnail.url
+                : `${strapiUrl}${template.thumbnail.url}`
+              : undefined;
+
+            return (
+              <TemplateCard
+                key={template.slug}
+                slug={template.slug}
+                title={template.title}
+                description={extractTextFromBlocks(template.subtitle)}
+                thumbnail={thumbUrl ? { type: "image" as const, src: thumbUrl } : undefined}
+                deployedUrl={template.preview_url ? template.preview_url : undefined}
+                sourceUrl={template.github_url ? template.github_url : undefined}
+                installCommand={template.cli_command ? template.cli_command : undefined}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

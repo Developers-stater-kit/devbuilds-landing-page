@@ -4,6 +4,8 @@ import { TypographyH2, TypographyH3 } from "../Typography/typography";
 import { Cursive, Tag } from "../Typography/utils";
 import { Play, Star } from "lucide-react";
 import Link from "next/link";
+import { FaApple, FaAws, FaDribbble, FaGithub, FaSlack } from "react-icons/fa";
+import { SiBetterauth, SiNextdotjs, SiNotion, SiPrisma, SiStripe, SiSupabase, SiTailwindcss, SiTypescript, SiVercel } from "react-icons/si";
 
 export function CTASection() {
   return (
@@ -94,6 +96,146 @@ export function CTA2() {
         </div>
       </div>
 
+    </div>
+  );
+}
+
+
+export function CTA3() {
+  return (
+    <div className="relative w-full overflow-hidden px-6 py-24 flex flex-col items-center justify-center">
+
+      {/* Background Radial Gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,color-mix(in_srgb,var(--foreground)_6%,transparent)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(255,255,255,0.06)_0%,transparent_70%)] pointer-events-none" />
+      {/* Concentric Rings */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] opacity-70 pointer-events-none flex items-center justify-center">
+        <div className="relative w-full h-full animate-[spin_60s_linear_infinite]">
+          {/* Ring 1 - Outer */}
+          <div className="absolute inset-[10%] rounded-full border border-foreground/30">
+
+            {/* Top Left - GitHub */}
+            <div className="absolute top-[14.6%] left-[14.6%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-12 h-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border rounded-xl flex items-center justify-center shadow-2xl">
+                  <FaGithub className="text-black dark:text-white w-5 h-5" />
+                </div>
+              </div>
+            </div>
+
+            {/* Top Right - Vercel */}
+            <div className="absolute top-[14.6%] left-[85.4%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-12 h-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border rounded-xl flex items-center justify-center shadow-2xl">
+                  <SiVercel className="text-black dark:text-white w-5 h-5" />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Left - Stripe */}
+            <div className="absolute top-[85.4%] left-[14.6%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-12 h-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border rounded-xl flex items-center justify-center shadow-2xl">
+                  <SiStripe className="text-black dark:text-white w-5 h-5" />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Right - Next.js */}
+            <div className="absolute top-[85.4%] left-[85.4%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-12 h-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border rounded-xl flex items-center justify-center shadow-2xl">
+                  <SiNextdotjs className="text-black dark:text-white w-5 h-5" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Ring 2 */}
+          <div className="absolute inset-[22%] rounded-full border border-foreground/40">
+
+            {/* Tailwind */}
+            <div className="absolute top-[50%] right-0 translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-14 h-14 bg-white/80 dark:bg-zinc-900/80 border border-white/10 rounded-2xl flex items-center justify-center shadow-2xl">
+                  <SiTailwindcss className="text-black dark:text-white w-6 h-6" />
+                </div>
+              </div>
+            </div>
+
+            {/* TypeScript */}
+            <div className="absolute bottom-[8%] left-[24%] -translate-x-1/2 translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-12 h-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center shadow-2xl">
+                  <SiTypescript className="text-black dark:text-white w-5 h-5" />
+                </div>
+              </div>
+            </div>
+
+            {/* Prisma */}
+            <div className="absolute top-[8%] left-[24%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-12 h-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-white/10 rounded-xl flex items-center justify-center shadow-2xl">
+                  <SiPrisma className="text-black dark:text-white w-5 h-5" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Ring 3 */}
+          <div className="absolute inset-[33%] rounded-full border border-foreground/60 bg-white/1">
+
+            {/* Supabase - Bottom */}
+            <div className="absolute bottom-[3%] left-[50%] -translate-x-1/2 translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-16 h-16 bg-white/80 dark:bg-zinc-900/80 border border-white/10 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(99,91,255,0.15)]">
+                  <SiSupabase className="text-black dark:text-white w-6 h-6" />
+                </div>
+              </div>
+            </div>
+
+            {/* BetterAuth - Top Left */}
+            <div className="absolute top-[3%] left-[25%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-16 h-16 bg-white/80 dark:bg-zinc-900/80 border border-white/10 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(99,91,255,0.15)]">
+                  <SiBetterauth className="text-black dark:text-white w-6 h-6" />
+                </div>
+              </div>
+            </div>
+
+            {/* Stripe - Top Right */}
+            <div className="absolute top-[3%] left-[75%] -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-[spin_60s_linear_infinite_reverse]">
+                <div className="w-16 h-16 bg-white/80 dark:bg-zinc-900/80 border border-white/10 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(99,91,255,0.15)]">
+                  <SiStripe className="text-black dark:text-white w-6 h-6" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Ring 4 - Inner */}
+          <div className="absolute inset-[44%] rounded-full border border-foreground/60 bg-white/2 shadow-[0_0_80px_rgba(255,255,255,0.05)_inset]" />
+        </div>
+      </div>
+
+      {/* CTA Content */}
+      <div className="relative z-10 flex flex-col items-center text-center mt-16">
+        <TypographyH2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground mb-6">
+          Built with the stack <br/>you already love
+        </TypographyH2>
+
+        <Link href="/contact">
+          <Button className="bg-foreground text-background hover:bg-foreground rounded-full px-8 py-6 mt-4 md:mt-6 text-sm md:text-base font-semibold transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] hover:-translate-y-1">
+            Let's Build Together
+          </Button>
+        </Link>
+      </div>
+
+      {/* Bottom Gradient Fade */}
+      <div className="absolute bottom-0 w-full h-[250px] bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </div>
   );
 }

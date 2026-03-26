@@ -86,11 +86,11 @@ export function TemplateCard({
 }: TemplateCardProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.02, y: -5 }}
+      // whileHover={{ scale: 1.02, y: -5 }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
       className={cn(
         "group flex flex-col bg-card text-card-foreground overflow-hidden shadow-sm",
-        "transition-colors duration-200 border border-border rounded-xl",
+        "transition-colors duration-200 border border-border",
         className
       )}
       aria-label={`View ${title} template`}
