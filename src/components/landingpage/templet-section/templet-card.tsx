@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, Globe, Github, Copy, Check } from "lucide-react";
 import { useState } from "react";
@@ -23,7 +24,7 @@ interface TemplateCardProps {
 
 function FallbackThumbnail() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-muted/80 via-muted/40 to-muted/10 flex items-center justify-center">
+    <div className="w-full h-full bg-linear-to-br from-muted/80 via-muted/40 to-muted/10 flex items-center justify-center">
       <div className="flex flex-col items-center gap-2 opacity-30">
         <svg
           width="32"
@@ -84,10 +85,12 @@ export function TemplateCard({
   className,
 }: TemplateCardProps) {
   return (
-    <div
+    <motion.div
+      // whileHover={{ scale: 1.02, y: -5 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
       className={cn(
-        "group flex flex-col bg-card text-card-foreground overflow-hidden",
-        "hover:bg-card/80 transition-colors duration-200",
+        "group flex flex-col bg-card text-card-foreground overflow-hidden shadow-sm",
+        "transition-colors duration-200 border border-border",
         className
       )}
       aria-label={`View ${title} template`}
@@ -174,6 +177,6 @@ export function TemplateCard({
           {description}
         </p>
       </Link>
-    </div>
+    </motion.div>
   );
 }

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 import { TypographyH1, TypographyH2, TypographyH3, TypographyP } from '@/components/Typography/typography';
 import { ArrowRight, Code2, Layers, PenTool, Database, Bot, Workflow, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import { CTA2 } from '@/components/landingpage/cta';
+import { CTA2, CTA3 } from '@/components/landingpage/cta';
 import { Tag } from '@/components/Typography/utils';
 import { Button } from '@/components/ui/button';
 
@@ -150,8 +150,8 @@ export default function AboutPage() {
 
       {/* CTA */}
       <SectionWrapper borders={{ left: true, right: true, top: true }} innerClassName="my-0">
-        <div className="p-2">
-          <CTA2 />
+        <div className="p-2 lg:min-w-4xl w-full">
+          <CTA3 />
         </div>
       </SectionWrapper>
     </div>

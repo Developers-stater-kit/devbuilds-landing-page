@@ -1,50 +1,105 @@
-import React from 'react';
-import type { Metadata } from "next";
-import { SectionWrapper } from '@/components/landingpage/container';
-import { TypographyH1 } from '@/components/Typography/typography';
-import { Tag } from '@/components/Typography/utils';
-import { Sparkles, ArrowLeft, Paintbrush } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { getTemplateBySlug, extractTextFromBlocks } from "@/lib/strapi";
+import { notFound } from "next/navigation";
+import { TypographyH1, TypographyH3, TypographyP } from "@/components/Typography/typography";
+import { Github, Globe, Terminal } from "lucide-react";
+import React from "react";
+import Link from "next/link";
+import { CopyButton } from "@/components/ui/copy-button";
+import { marked } from 'marked';
 
-export const metadata: Metadata = {
-  title: "Templates - Coming Soon",
-  description:
-    "Launch-ready landing page templates for SaaS, restaurants, AI products and more. Just customize and go live.",
-};
+export default async function TemplatePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const template = await getTemplateBySlug(slug);
 
-export default function TemplatesPage() {
+  if (!template) {
+    notFound();
+  }
+
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const thumbUrl = template.thumbnail?.url
+    ? template.thumbnail.url.startsWith("http")
+      ? template.thumbnail.url
+      : `${strapiUrl}${template.thumbnail.url}`
+    : undefined;
+
+  const subtitle = extractTextFromBlocks(template.subtitle);
+
   return (
-    <SectionWrapper borders={{ left: true, right: true }}>
-      <div className="mt-38 mb-12 flex flex-col items-center text-center gap-8 px-4 relative z-10 w-full py-10">
-        <div className="relative group">
-          {/* The pulsing shadow layer */}
-          <div className="absolute inset-0 bg-primary/20 dark:bg-primary/30 rounded-3xl blur-xl animate-pulse group-hover:bg-primary/30 transition-all duration-500" />
+    <div className="space-y-8 animate-in fade-in zoom-in-95 duration-500 pb-16">
+      <div className="space-y-4">
+        <TypographyH1>{template.title}</TypographyH1>
+        {subtitle && (
+          <TypographyP className="text-xl text-muted-foreground">
+            {subtitle}
+          </TypographyP>
+        )}
+      </div>
 
-          {/* The main icon box */}
-          <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-card border border-border shadow-md flex items-center justify-center overflow-hidden">
-            <Paintbrush className="w-10 h-10 sm:w-14 sm:h-14 text-primary animate-pulse transition-transform duration-700 group-hover:scale-110" />
-            <Sparkles className="absolute top-4 right-4 w-4 h-4 sm:w-5 sm:h-5 text-amber-500 animate-spin-slow opacity-80" />
+      {template.cli_command && (
+        <div className="flex flex-col gap-2">
+          <TypographyH3 className="text-sm font-medium text-foreground">Installation</TypographyH3>
+          <div className="p-4 bg-muted border border-border rounded-lg inline-flex items-center gap-3 w-full">
+            <Terminal size={18} className="text-muted-foreground shrink-0" />
+            <code className="text-[10px] md:text-sm font-mono flex-1 text-muted-foreground font-semibold tracking-tight overflow-x-auto">
+              {template.cli_command}
+            </code>
+            <CopyButton text={template.cli_command} className="shrink-0" />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4">
-          <Tag>Coming Soon</Tag>
-          <TypographyH1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight leading-[1.1] max-w-3xl">
-            Working hard on it.<br />
-            <span className="text-muted-foreground mt-3 inline-block text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-balance">
-              Templates will go live soon.
-            </span>
-          </TypographyH1>
+      )}
+
+      {thumbUrl && (
+        <div className="w-full aspect-video rounded-xl overflow-hidden border border-border bg-muted shadow-sm max-w-5xl mt-8">
+          <img
+            src={thumbUrl}
+            alt={template.title}
+            className="w-full h-full object-cover"
+          />
         </div>
+      )}
 
-        <Link href="/" className="mt-6 sm:mt-10">
-          <Button size="lg" className="h-14 px-8 rounded-full text-base font-semibold group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary/20 hover:shadow-primary/40 text-black bg-primary hover:bg-primary/90">
-            <ArrowLeft className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform" />
-            Return to Homepage
-          </Button>
-        </Link>
-
+      <div className="flex flex-row gap-4 items-center justify-stretch">
+        {template.preview_url && (
+          <Link
+            href={template.preview_url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 bg-amber-600 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm w-[48%] justify-center text-black"
+          >
+            <Globe size={18} /> Live Preview
+          </Link>
+        )}
+        {template.github_url && (
+          <Link
+            href={template.github_url}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 bg-background border border-input text-foreground rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors shadow-sm w-[48%] justify-center"
+          >
+            <Github size={18} /> Source Code
+          </Link>
+        )}
       </div>
-    </SectionWrapper>
+
+      {/* {template.description && (
+        <div className="pt-6 border-t border-border mt-10">
+          <span className="text-lg font-semibold block mb-4">About this template</span>
+          <div
+            className="prose prose-zinc dark:prose-invert max-w-none"
+            dangerouslySetInnerHTML={{
+              __html: marked(
+                template.description
+                  .replace(/\\n/g, '\n')  // convert literal \n to real newlines
+                  .replace(/\\`/g, '`')   // fix escaped backticks
+              )
+            }}
+          />
+        </div>
+      )} */}
+    </div>
   );
 }

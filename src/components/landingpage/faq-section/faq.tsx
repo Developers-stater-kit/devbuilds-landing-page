@@ -1,3 +1,5 @@
+"use client";
+
 import { TypographyH2, TypographyP } from "@/components/Typography/typography";
 import { Tag, Cursive } from "@/components/Typography/utils";
 import React from "react";
@@ -82,7 +84,7 @@ export default function FaqSection() {
               >
                 <AccordionTrigger className="text-sm font-medium text-foreground py-4 hover:no-underline [&>svg]:hidden [&>*:last-child]:hidden">
                   <span className="flex-1 text-left">{item.question}</span>
-                  <span className="ml-4 flex-shrink-0 text-muted-foreground text-xl leading-none">
+                  <span className="ml-4 shrink-0 text-muted-foreground text-xl leading-none">
                     +
                   </span>
                 </AccordionTrigger>
