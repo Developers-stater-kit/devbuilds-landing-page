@@ -24,7 +24,7 @@ interface TemplateCardProps {
 
 function FallbackThumbnail() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-muted/80 via-muted/40 to-muted/10 flex items-center justify-center">
+    <div className="w-full h-full bg-linear-to-br from-muted/80 via-muted/40 to-muted/10 flex items-center justify-center">
       <div className="flex flex-col items-center gap-2 opacity-30">
         <svg
           width="32"

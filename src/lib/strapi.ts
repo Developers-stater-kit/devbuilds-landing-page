@@ -58,7 +58,7 @@ export function extractTextFromBlocks(blocks?: StrapiBlock[] | null): string {
  * Fetch featured templates from Strapi.
  */
 export async function getFeaturedTemplates(): Promise<Template[]> {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
 
   try {
     // URL includes populate=* to ensure media fields like 'thumbnail' are included
@@ -85,7 +85,7 @@ export type SidebarTemplateItem = Pick<Template, "id" | "documentId" | "title" |
  * Fetch all templates (only title, slug, and category) for the sidebar layout.
  */
 export async function getTemplatesForSidebar(): Promise<SidebarTemplateItem[]> {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
 
   try {
     const res = await fetch(`${strapiUrl}/api/templates?fields[0]=category&fields[1]=slug&fields[2]=title&pagination[pageSize]=100`, {
@@ -109,7 +109,7 @@ export async function getTemplatesForSidebar(): Promise<SidebarTemplateItem[]> {
  * Fetch all templates (with full details) for the templates index page.
  */
 export async function getAllTemplates(): Promise<Template[]> {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
 
   try {
     const res = await fetch(`${strapiUrl}/api/templates?populate=*&pagination[pageSize]=100`, {
@@ -133,7 +133,7 @@ export async function getAllTemplates(): Promise<Template[]> {
  * Fetch a single template's full details by its slug.
  */
 export async function getTemplateBySlug(slug: string): Promise<Template | null> {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
 
   try {
     const res = await fetch(`${strapiUrl}/api/templates?filters[slug][$eq]=${slug}&populate=*`, {
