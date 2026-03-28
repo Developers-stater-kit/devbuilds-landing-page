@@ -27,7 +27,7 @@ export function CTASection() {
           className="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 rounded-full px-8 py-6 mt-3 text-base font-semibold transition-all shadow-lg dark:shadow-none"
           asChild
         >
-          <Link href="/contact">
+          <Link href="/templates">
             Browse Templates →
           </Link>
         </Button>
