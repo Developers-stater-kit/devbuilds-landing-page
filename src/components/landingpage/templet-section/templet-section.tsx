@@ -6,7 +6,7 @@ import { getFeaturedTemplates, extractTextFromBlocks } from "@/lib/strapi";
 
 export default async function TempletSection() {
   const templates = await getFeaturedTemplates();
-  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL;
 
   const DUMMY_TEMPLATES = [
     {

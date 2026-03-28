@@ -4,7 +4,7 @@ import { MobileSidebar } from "@/components/landingpage/templates-layout/mobile-
 import React from "react";
 import { SectionWrapper } from "@/components/landingpage/container";
 
-export default async function TemplatesLayout({
+export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
@@ -21,22 +21,21 @@ export default async function TemplatesLayout({
 
   return (
     <SectionWrapper borders={{ left: true, right: true }}>
-    <div className="container mx-auto flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 px-4 md:px-6 mt-14 mb-16 pt-20">
-      {/* Sidebar - fixed on desktop */}
-      <aside className="fixed top-14 z-30 -ml-2 hidden min-h-[calc(100vh-1rem)] w-full shrink-0 md:sticky md:block overflow-y-auto border-r-2 border-dashed">
-        <div className="h-full pr-6">
-          <SidebarNav grouped={grouped} />
-        </div>
-      </aside>
-      
-      {/* Main Content Area */}
-      <main className="relative lg:gap-10">
-        <MobileSidebar grouped={grouped} />
-        <div className="w-full min-w-0">
-          {children}
-        </div>
-      </main>
-    </div>
+      <div className="container mx-auto md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 px-4 md:px-6 mt-14 mb-16 pt-20 min-h-screen">
+        <aside className="-ml-2 hidden w-full shrink-0 md:block border-r-2 border-dashed border-border">
+          <div className="sticky top-20 pr-6 h-fit max-h-[calc(100vh-6rem)] overflow-y-auto pb-10">
+            <SidebarNav grouped={grouped} />
+          </div>
+        </aside>
+
+        {/* Main Content Area */}
+        <main className="relative lg:gap-10">
+          <MobileSidebar grouped={grouped} />
+          <div className="w-full min-w-0">
+            {children}
+          </div>
+        </main>
+      </div>
     </SectionWrapper>
   );
 }

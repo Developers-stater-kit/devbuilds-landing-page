@@ -1,7 +1,16 @@
 import { TypographyH1, TypographyP } from "@/components/Typography/typography";
 import { ArrowRight, Code2, Crown, Sparkles, Package } from "lucide-react";
+import { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+  title: "UI Templates",
+  description: "Launch your next idea instantly with our suite of production-ready templates. Choose from free open-source starters or unlock our premium applications.",
+  openGraph: {
+    title: "UI Templates | DevBuilds",
+    description: "Production-ready templates and high-conversion applications.",
+    url: "https://devbuilds.in/templates",
+  }
+};
 export default async function TemplatesIndexPage() {
   return (
     <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-24 md:px-4">
@@ -15,7 +24,7 @@ export default async function TemplatesIndexPage() {
           Launch your next idea instantly with our suite of production-ready templates.
           Choose from free open-source starters or unlock our premium, high-conversion applications.
         </TypographyP>
-        </div>
+      </div>
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">

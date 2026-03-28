@@ -19,7 +19,7 @@ export default async function TemplatePage({
     notFound();
   }
 
-  const strapiUrl = process.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
+  const strapiUrl = process.env.PUBLIC_STRAPI_URL;
   const thumbUrl = template.thumbnail?.url
     ? template.thumbnail.url.startsWith("http")
       ? template.thumbnail.url

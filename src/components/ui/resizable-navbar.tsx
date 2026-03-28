@@ -10,7 +10,14 @@ import {
 import Link from "next/link";
 
 import React, { useRef, useState } from "react";
-
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -27,6 +34,8 @@ interface NavItemsProps {
   items: {
     name: string;
     link: string;
+    isDropdown?: boolean;
+    dropdownItems?: { label: string; description: string; link: string; icon?: React.ReactNode }[];
   }[];
   className?: string;
   onItemClick?: () => void;
@@ -82,9 +91,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
-            )
+            child as React.ReactElement<{ visible?: boolean }>,
+            { visible },
+          )
           : child,
       )}
     </motion.div>
@@ -133,23 +142,82 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         className,
       )}
     >
-      {items.map((item, idx) => (
-        <Link
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative whitespace-nowrap px-3 py-2 text-neutral-600 dark:text-neutral-100"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </Link>
-      ))}
+      {items.map((item, idx) =>
+        item.isDropdown && item.dropdownItems ? (
+          <div
+            key={`link-${idx}`}
+            onMouseEnter={() => setHovered(idx)}
+            className="relative flex items-center justify-center cursor-pointer"
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <NavigationMenu className="relative z-20">
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="h-auto bg-transparent px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-transparent focus:bg-transparent data-active:bg-transparent data-[state=open]:bg-transparent dark:text-neutral-100 dark:hover:bg-transparent dark:focus:bg-transparent dark:data-active:bg-transparent dark:data-[state=open]:bg-transparent">
+                    {item.name}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="flex flex-col w-[380px] gap-2 p-3">
+                      {item.dropdownItems.map((dropdownItem) => (
+                        <li key={dropdownItem.label} className="w-full">
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={dropdownItem.link}
+                              className="group flex flex-row items-stretch gap-0 select-none rounded-lg outline-none transition-all duration-200 hover:bg-neutral-100/70 dark:hover:bg-neutral-800/40 border border-border overflow-hidden"
+                            >
+                              {/* Left illustration box */}
+                              <div className="w-[110px] shrink-0 flex items-center justify-center bg-muted/60 dark:bg-neutral-800/60 border-r border-border p-4">
+                                {dropdownItem.icon}
+                              </div>
+
+                              {/* Right label + description */}
+                              <div className="flex flex-col justify-center gap-1 px-4 py-4 flex-1">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-50">
+                                    {dropdownItem.label}
+                                  </span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                  </svg>
+                                </div>
+                                <p className="text-[12px] leading-relaxed text-neutral-500 dark:text-neutral-400">
+                                  {dropdownItem.description}
+                                </p>
+                              </div>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        ) : (
+          <Link
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className="relative whitespace-nowrap px-3 py-2 text-neutral-600 dark:text-neutral-100"
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </Link>
+        )
+      )}
     </motion.div>
   );
 };
@@ -240,7 +308,7 @@ export const MobileNavToggle = ({
   );
 };
 
-export const NavbarLogo = ({url}:{url:string}) => {
+export const NavbarLogo = ({ url }: { url: string }) => {
   return (
     <Link
       href="/"
@@ -272,9 +340,9 @@ export const NavbarButton = ({
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";
 } & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+    | React.ComponentPropsWithoutRef<"a">
+    | React.ComponentPropsWithoutRef<"button">
+  )) => {
   const baseStyles =
     "px-4 py-2 rounded-md bg-white dark:bg-neutral-900 text-black dark:text-white text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 

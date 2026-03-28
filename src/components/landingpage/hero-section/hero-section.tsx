@@ -42,7 +42,7 @@ export default function HeroSection() {
           <Link href="/contact">
             <RainbowButton className="rounded-xl dark:text-black">Start a Project →</RainbowButton>
           </Link>
-          <Link href="/templets">
+          <Link href="/templates">
             <RainbowButton variant={"outline"} className="rounded-xl">Browse Templates</RainbowButton>
           </Link>
         </FadeInStaggerItem>
