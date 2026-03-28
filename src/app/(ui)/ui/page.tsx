@@ -1,7 +1,17 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { TypographyH1, TypographyP } from "@/components/Typography/typography";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Copy-Paste UI Components",
+  description: "A growing collection of copy-paste UI components built with Tailwind CSS and Motion. Drop them into any Next.js project.",
+  openGraph: {
+    title: "Copy-Paste UI Components | DevBuilds",
+    description: "A growing collection of copy-paste UI components built with Tailwind CSS and Motion.",
+    url: "https://devbuilds.in/ui"
+  }
+};
 // ─── Dummy Data ───────────────────────────────────────────────────────────────
 
 const UI_COMPONENTS: {

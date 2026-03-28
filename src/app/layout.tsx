@@ -28,6 +28,9 @@ const kalam = Kalam({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://devbuilds.in"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "DevBuilds — The Stack, The Templates, The Team",
     template: "%s | DevBuilds",
@@ -95,6 +98,22 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("font-sans", inter.variable)}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "DevBuilds",
+              url: "https://devbuilds.in",
+              sameAs: [
+                "https://x.com/debojeetbuilds",
+              ]
+            })
+          }}
+        />
+      </head>
       <body
         className={`[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${geistSans.variable} ${geistMono.variable} ${kalam.variable} antialiased`}
       >
