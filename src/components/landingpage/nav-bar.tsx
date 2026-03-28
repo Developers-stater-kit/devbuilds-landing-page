@@ -7,23 +7,38 @@ import {
   MobileNavMenu,
   MobileNavToggle,
   Navbar,
-  NavbarLogo,
   NavBody,
   NavItems,
 } from "../ui/resizable-navbar";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
+import { Layers, LayoutTemplate } from "lucide-react";
 
-const LOGO_URL =
-  "";
 
 export function NavBar() {
   const navItems = [
-    // { name: "Devkit", link: "/devkit" },
     { name: "About", link: "/about" },
-    { name: "Templates", link: "/templates" },
-    { name: "contact", link: "/contact" },
+    {
+      name: "Resources",
+      link: "/templates",
+      isDropdown: true,
+      dropdownItems: [
+        {
+          label: "Templates",
+          description: "Production-ready website templates and starter kits",
+          link: "/templates",
+          icon: <LayoutTemplate size={24} className="text-muted-foreground" />,
+        },
+        {
+          label: "UI Components",
+          description: "Copy-paste UI components built with Tailwind and Motion",
+          link: "/ui",
+          icon: <Layers size={24} className="text-muted-foreground" />,
+        },
+      ]
+    },
+    { name: "Contact", link: "/contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,14 +80,27 @@ export function NavBar() {
             className="px-4"
           >
             {navItems.map((item, idx) => (
-              <Link
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600"
-              >
-                <span className="block">{item.name}</span>
-              </Link>
+              item.isDropdown && item.dropdownItems ? (
+                item.dropdownItems.map((dropItem, dropIdx) => (
+                  <Link
+                    key={`mobile-sublink-${idx}-${dropIdx}`}
+                    href={dropItem.link}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="relative text-neutral-600"
+                  >
+                    <span className="block">{dropItem.label}</span>
+                  </Link>
+                ))
+              ) : (
+                <Link
+                  key={`mobile-link-${idx}`}
+                  href={item.link}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="relative text-neutral-600"
+                >
+                  <span className="block">{item.name}</span>
+                </Link>
+              )
             ))}
             <div className="flex w-full flex-col gap-4">
               <Link href="/contact">

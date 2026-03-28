@@ -15,7 +15,7 @@ export default async function TemplatesIndexPage() {
           Launch your next idea instantly with our suite of production-ready templates.
           Choose from free open-source starters or unlock our premium, high-conversion applications.
         </TypographyP>
-        </div>
+      </div>
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
