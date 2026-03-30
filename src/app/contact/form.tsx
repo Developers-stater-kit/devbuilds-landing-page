@@ -34,7 +34,9 @@ const formSchema = z.object({
   budget: z.string({
     required_error: "Please select a budget range.",
   }),
-  message: z.string()
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  })
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -60,11 +62,23 @@ export default function ContactForm({
 
   async function onSubmit(values: FormValues) {
     setIsLoading(true);
+
     try {
-      console.log(values);
-      await new Promise((res) => setTimeout(res, 1000));
-      toast.success("Message sent! We'll get back to you within 24 hours.");
-      form.reset();
+      const response = await fetch(process.env.FORM_SPREE_URL!, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent! We'll get back to you within 24 hours.");
+        form.reset();
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
