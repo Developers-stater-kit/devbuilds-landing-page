@@ -64,7 +64,7 @@ export default function ContactForm({
     setIsLoading(true);
 
     try {
-      const response = await fetch(process.env.FORM_SPREE_URL!, {
+      const response = await fetch(process.env.NEXT_PUBLIC_FORM_SPREE_URL!, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
