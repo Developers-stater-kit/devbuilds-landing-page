@@ -25,7 +25,7 @@ export const getAllTemplates = async (): Promise<getAllTemplatesResponse> => {
       success: true,
       data: result.data || [],
     }
-  } catch (error : any) {
+  } catch (error:any) {
     console.error("Error fetching templates:", error);
     return {
       success: false,
@@ -34,6 +34,32 @@ export const getAllTemplates = async (): Promise<getAllTemplatesResponse> => {
     }
   }
 };
+
+export const getAllFeaturedTemplates = async (): Promise<getAllTemplatesResponse> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_BACKEND_URL}/api/admin/templates?featured=true`,
+      { cache: "no-store" }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch templates");
+    }
+
+    const result = await response.json();
+
+    return {
+      success: true,
+      data: result.data || [],
+    }
+  } catch (error:any) {
+    console.error("Error fetching templates:", error);
+    return {
+      success: false,
+      data: [],
+      error: error.message,
+    }
+  }
+}
 
 export interface getTemplateByIdResponse {
   success: boolean;
@@ -46,7 +72,7 @@ export const getTemplateById = async (id: string): Promise<getTemplateByIdRespon
 
     const response = await fetch(
       `${process.env.NEXT_BACKEND_URL}/api/admin/templates/${id}`,
-      { cache: "no-store" } 
+      { cache: "no-store" }
     );
     if (!response.ok) {
       throw new Error("Failed to fetch template");
@@ -54,9 +80,9 @@ export const getTemplateById = async (id: string): Promise<getTemplateByIdRespon
     const result = await response.json();
     return {
       success: true,
-      data:result.data
+      data: result.data
     }
-  } catch (error : any) {
+  } catch (error:any) {
     console.error("Error fetching template by ID:", error);
     return {
       success: false,
