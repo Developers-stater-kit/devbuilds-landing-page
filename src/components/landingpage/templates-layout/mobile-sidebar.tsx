@@ -74,11 +74,11 @@ export function MobileSidebar({ grouped }: MobileSidebarProps) {
                 {isOpen && (
                   <div className="grid grid-flow-row auto-rows-max text-sm gap-0.5 mt-1 mb-2 ">
                     {templates.map((template) => {
-                      const href = `/templates/${template.slug}`;
+                      const href = `/templates/${template.id}`;
                       const isActive = pathname === href;
                       return (
                         <Link
-                          key={template.slug}
+                          key={template.id}
                           href={href}
                           onClick={() => setOpen(false)}
                           className={cn(

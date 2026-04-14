@@ -1,10 +1,9 @@
 import FaqSection from "@/components/landingpage/faq-section/faq";
 import { Metadata } from "next";
-import { Container, SectionWrapper } from "@/components/landingpage/container";
+import { SectionWrapper } from "@/components/landingpage/container";
 import DevkitSection from "@/components/landingpage/devkit-section/devkit-section";
 import HeroSection from "@/components/landingpage/hero-section/hero-section";
 import TempletSection from "@/components/landingpage/templet-section/templet-section";
-import { ScalesContainer } from "@/components/ui/scales";
 import { CTA2, CTASection } from "@/components/landingpage/cta";
 import Agency from "@/components/landingpage/agency-section/agency";
 import { NumberTicker } from "@/components/ui/number-ticker";
@@ -46,12 +45,12 @@ export default function Home() {
   return (
     <div className="mx-auto">
       {/* Hero */}
-      <SectionWrapper>
+      {/* <SectionWrapper>
         <HeroSection />
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       {/* Proof Strip — intentionally outside SectionWrapper to break the scales pattern */}
-      <div className="relative w-full border-y-2 border-dashed bg-background z-10">
+      {/* <div className="relative w-full border-y-2 border-dashed bg-background z-10">
         <div className="w-full max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 lg:gap-10">
           {Stats.map((stat, index) => (
             <StatsCard
@@ -63,40 +62,40 @@ export default function Home() {
             />
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* DevKit */}
-      <SectionWrapper borders={{ left: true, right: true }}>
+      {/* <SectionWrapper borders={{ left: true, right: true }}>
         <DevkitSection />
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       {/* Templates */}
       <SectionWrapper borders={{ left: true, right: true, bottom: true, top: true }}>
         <TempletSection />
       </SectionWrapper>
 
-      <SectionWrapper borders={{ left: true, right: true }} innerClassName="my-14">
+      {/* <SectionWrapper borders={{ left: true, right: true }} innerClassName="my-14">
         <div className="w-full h-[400px] bg-background border-y-2 border-dashed p-4">
           <CTASection />
         </div>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       {/* Agency */}
-      <SectionWrapper borders={{ left: true, right: true, top: true }}>
+      {/* <SectionWrapper borders={{ left: true, right: true, top: true }}>
         <Agency />
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       {/* FAQ */}
-      <SectionWrapper borders={{ left: true, right: true, top: true }}>
+      {/* <SectionWrapper borders={{ left: true, right: true, top: true }}>
         <FaqSection />
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       {/* CTA */}
-      <SectionWrapper borders={{ left: true, right: true, top: true }}>
+      {/* <SectionWrapper borders={{ left: true, right: true, top: true }}>
         <div className="p-2">
           <CTA2 />
         </div>
-      </SectionWrapper>
+      </SectionWrapper> */}
     </div>
   );
 }

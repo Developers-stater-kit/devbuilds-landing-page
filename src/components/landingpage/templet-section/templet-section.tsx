@@ -2,25 +2,25 @@ import { TypographyH2, TypographyP } from "@/components/Typography/typography";
 import { Tag } from "@/components/Typography/utils";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TemplateCard } from "@/components/landingpage/templet-section/templet-card";
-import { getFeaturedTemplates, extractTextFromBlocks } from "@/lib/strapi";
+import { getAllTemplates } from "@/app/(ui)/templates/action";
+import { Template } from "@/lib/constant";
 
 export default async function TempletSection() {
-  const templates = await getFeaturedTemplates();
-  const strapiUrl = process.env.PUBLIC_STRAPI_URL;
-
+  const Result = await getAllTemplates();
+  const templates = Result.data;
   const DUMMY_TEMPLATES = [
     {
-      slug: "dummy-ecommerce",
+      id: "dummy-ecommerce",
       title: "E-Commerce Starter",
       description: "A full-featured e-commerce storefront built with Next.js and Stripe.",
     },
     {
-      slug: "dummy-saas-dashboard",
+      id: "dummy-saas-dashboard",
       title: "SaaS Dashboard",
       description: "A clean SaaS dashboard with analytics, billing, and user management.",
     },
     {
-      slug: "dummy-blog",
+      id: "dummy-blog",
       title: "Blog & CMS",
       description: "A minimal blog starter with MDX support and dark mode out of the box.",
     },
@@ -48,32 +48,34 @@ export default async function TempletSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 divide-x divide-border divide-dashed gap-2 lg:gap-0 px-2 pt-2">
 
           {/* Real templates from API */}
-          {templates.map((template) => {
-            const thumbUrl = template.thumbnail?.url
-              ? template.thumbnail.url.startsWith("http")
-                ? template.thumbnail.url
-                : `${strapiUrl}${template.thumbnail.url}`
-              : undefined;
-            return (
-              <TemplateCard
-                key={template.slug}
-                slug={template.slug}
-                title={template.title}
-                description={extractTextFromBlocks(template.subtitle)}
-                thumbnail={thumbUrl ? { type: "image" as const, src: thumbUrl } : undefined}
-                deployedUrl={template.preview_url ? template.preview_url : undefined}
-                sourceUrl={template.github_url ? template.github_url : undefined}
-                installCommand={template.cli_command ? template.cli_command : undefined}
-              />
-            );
-          })}
+          {templates.map((template: Template) => (
+            <TemplateCard
+              key={template.id}
+              id={template.id}
+              title={template.title}
+              description={template.description ?? ""}
+
+              thumbnail={
+                template.thumbnail
+                  ? {
+                    type: "image" as const,
+                    src: template.thumbnail,
+                  }
+                  : undefined
+              }
+
+              deployedUrl={template.previewUrl || undefined}
+              sourceUrl={template.githubUrl || undefined}
+              installCommand={template.cliCommand || undefined}
+            />
+          ))}
 
           {/* Dummy blurred coming soon cards */}
           {DUMMY_TEMPLATES.slice(0, Math.max(0, 3 - templates.length)).map((dummy) => (
-            <div key={dummy.slug} className="relative">
+            <div key={dummy.id} className="relative">
               <div className="pointer-events-none select-none opacity-50 blur-[2px]">
                 <TemplateCard
-                  slug={dummy.slug}
+                  id={dummy.id}
                   title={dummy.title}
                   description={dummy.description}
                 />

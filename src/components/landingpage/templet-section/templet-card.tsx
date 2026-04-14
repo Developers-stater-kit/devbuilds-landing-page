@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface TemplateCardProps {
-  slug: string;
+  id: string,
   title: string;
   description: string;
   thumbnail?:
@@ -75,7 +75,7 @@ function CopyCommand({ command }: { command: string }) {
 // ─── Template Card ────────────────────────────────────────────────────────────
 
 export function TemplateCard({
-  slug,
+  id,
   title,
   description,
   thumbnail,
@@ -155,7 +155,7 @@ export function TemplateCard({
 
       {/* ── Body ── */}
       <Link 
-        href={`/templates/${slug}`}
+        href={`/templates/${id}`}
         className="p-4 flex flex-col flex-1 border-t border-border min-h-[142px]"
     > {/* min-h ensures constant body height */}
         <div className="flex items-start justify-between gap-2">

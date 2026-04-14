@@ -1,21 +1,30 @@
-import { getTemplatesForSidebar } from "@/lib/strapi";
 import { SidebarNav, GroupedTemplates } from "@/components/landingpage/templates-layout/sidebar-nav";
 import { MobileSidebar } from "@/components/landingpage/templates-layout/mobile-sidebar";
 import React from "react";
 import { SectionWrapper } from "@/components/landingpage/container";
+import { getAllTemplates } from "./templates/action";
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const templates = await getTemplatesForSidebar();
+  // 1. Fetch the data
+  const response = await getAllTemplates();
 
-  // Group by category, default to 'General' if no category is assigned
-  const grouped = templates.reduce((acc, t) => {
+  // 2. Extract the array (handle potential undefined/null)
+  const templateList = response?.data || [];
+
+  // 3. Group by category with explicit types
+  const grouped = templateList.reduce((acc: GroupedTemplates, t: any) => {
     const cat = t.category || "General";
     if (!acc[cat]) acc[cat] = [];
-    acc[cat].push({ title: t.title, slug: t.slug });
+
+    acc[cat].push({
+      title: t.title,
+      id: String(t.id)
+    });
+
     return acc;
   }, {} as GroupedTemplates);
 
@@ -28,7 +37,6 @@ export default async function Layout({
           </div>
         </aside>
 
-        {/* Main Content Area */}
         <main className="relative lg:gap-10">
           <MobileSidebar grouped={grouped} />
           <div className="w-full min-w-0">
