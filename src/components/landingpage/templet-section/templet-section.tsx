@@ -2,11 +2,12 @@ import { TypographyH2, TypographyP } from "@/components/Typography/typography";
 import { Tag } from "@/components/Typography/utils";
 import { Highlighter } from "@/components/ui/highlighter";
 import { TemplateCard } from "@/components/landingpage/templet-section/templet-card";
-import { getAllTemplates } from "@/app/(ui)/templates/action";
+import { getAllFeaturedTemplates } from "@/app/(ui)/templates/action";
 import { Template } from "@/lib/constant";
 
 export default async function TempletSection() {
-  const Result = await getAllTemplates();
+  const Result = await getAllFeaturedTemplates();
+  // console.log(Result)
   const templates = Result.data;
   const DUMMY_TEMPLATES = [
     {
