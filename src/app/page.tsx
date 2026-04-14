@@ -1,10 +1,9 @@
 import FaqSection from "@/components/landingpage/faq-section/faq";
 import { Metadata } from "next";
-import { Container, SectionWrapper } from "@/components/landingpage/container";
+import { SectionWrapper } from "@/components/landingpage/container";
 import DevkitSection from "@/components/landingpage/devkit-section/devkit-section";
 import HeroSection from "@/components/landingpage/hero-section/hero-section";
 import TempletSection from "@/components/landingpage/templet-section/templet-section";
-import { ScalesContainer } from "@/components/ui/scales";
 import { CTA2, CTASection } from "@/components/landingpage/cta";
 import Agency from "@/components/landingpage/agency-section/agency";
 import { NumberTicker } from "@/components/ui/number-ticker";
